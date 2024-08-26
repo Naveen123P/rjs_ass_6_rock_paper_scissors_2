@@ -1,10 +1,15 @@
 .model-bg {
   height: 50vh;
-  width: 90vw;
+  width: 80vw;
   background-color: #ffffff;
   padding: 1rem;
 }
 .close-icon {
   height: 2rem;
   font-size: x-large;
+}
+@media screen and (min-width: 768px) {
+  .model-bg {
+    width: 70vw;
+  }
 }

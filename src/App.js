@@ -52,6 +52,7 @@ class App extends Component {
     playerChoice: choicesList[0],
     systemChoice: choicesList[1],
     result: gameResults.win,
+    playView: true,
   }
 
   renderScoreCardView = () => {
@@ -71,13 +72,66 @@ class App extends Component {
     )
   }
 
+  getScore = result => {
+    const {score} = this.state
+    let updatedScore
+    if (gameResults.win === result) {
+      updatedScore = score + 1
+    } else if (gameResults.lose === result) {
+      updatedScore = score - 1
+    } else {
+      updatedScore = score
+    }
+    return updatedScore
+  }
+
+  getResult = (playerId, systemId) => {
+    let result
+    if (playerId === systemId) {
+      result = gameResults.tie
+    } else if (playerId === 'PAPER' && systemId === 'ROCK') {
+      result = gameResults.win
+    } else if (playerId === 'SCISSORS' && systemId === 'ROCK') {
+      result = gameResults.lose
+    } else if (playerId === 'ROCK' && systemId === 'PAPER') {
+      result = gameResults.lose
+    } else if (playerId === 'SCISSORS' && systemId === 'PAPER') {
+      result = gameResults.win
+    } else if (playerId === 'ROCK' && systemId === 'SCISSORS') {
+      result = gameResults.win
+    } else if (playerId === 'PAPER' && systemId === 'SCISSORS') {
+      result = gameResults.lose
+    }
+    return result
+  }
+
+  clickOnChoice = object => {
+    const randomIndex = Math.floor(Math.random() * choicesList.length)
+    const sysChoice = choicesList[randomIndex]
+    this.setState({
+      score: this.getScore(this.getResult(object.id, sysChoice.id)),
+      playerChoice: object,
+      systemChoice: sysChoice,
+      result: this.getResult(object.id, sysChoice.id),
+      playView: false,
+    })
+  }
+
   renderPlayingView = () => (
     <UnList>
       {choicesList.map(each => (
-        <ChooseItem key={each.id} item={each} />
+        <ChooseItem
+          key={each.id}
+          item={each}
+          clickOnChoice={this.clickOnChoice}
+        />
       ))}
     </UnList>
   )
+
+  onClickPalyAgain = () => {
+    this.setState({playView: true})
+  }
 
   renderGameResultView = () => {
     const {playerChoice, systemChoice, result} = this.state
@@ -95,17 +149,23 @@ class App extends Component {
           </div>
         </GameResultItem>
         <Heading2>{result}</Heading2>
-        <Button>Play Again</Button>
+        <Button type="button" onClick={this.onClickPalyAgain}>
+          Play Again
+        </Button>
       </GameResultView>
     )
   }
 
   render() {
+    const {playView} = this.state
     return (
       <AppBg className="app-bg">
         {this.renderScoreCardView()}
-        {/* {this.renderPlayingView()} */}
-        {this.renderGameResultView()}
+        {playView ? (
+          <>{this.renderPlayingView()}</>
+        ) : (
+          <>{this.renderGameResultView()}</>
+        )}
         <GameRulesView />
       </AppBg>
     )

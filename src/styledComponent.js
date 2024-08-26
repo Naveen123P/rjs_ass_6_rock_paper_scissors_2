@@ -24,6 +24,10 @@ export const ScoreCardContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 20%;
+  @media screen and (min-width: 768px) {
+    width: 70%;
+    margin-left: 15%;
+  }
 `
 export const Heading = styled.h1`
   font-family: 'Bree Serif';
@@ -67,6 +71,12 @@ export const UnList = styled.ul`
   height: 70%;
   align-items: center;
   justify-content: center;
+  @media screen and (min-width: 768px) {
+    width: 310px;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    margin-left: calc(50% - 150px);
+  }
 `
 export const GameResultView = styled.div`
   height: 70%;
@@ -74,6 +84,10 @@ export const GameResultView = styled.div`
   flex-direction: column;
   align-items: space-between;
   justify-content: center;
+  @media screen and (min-width: 768px) {
+    width: 70%;
+    margin-left: 15%;
+  }
 `
 export const GameResultItem = styled.div`
   display: flex;
