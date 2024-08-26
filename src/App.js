@@ -11,7 +11,6 @@ import {
   GameResultItem,
   GameResultView,
   Image,
-  Heading2,
   Button,
 } from './styledComponent'
 import GameRulesView from './components/GameRulesView'
@@ -60,9 +59,12 @@ class App extends Component {
     return (
       <ScoreCardContainer>
         <div>
-          <Heading>ROCK</Heading>
-          <Heading>PAPER</Heading>
-          <Heading>SCISSORS</Heading>
+          <Heading>
+            Rock <br />
+            Paper
+            <br />
+            Scissors
+          </Heading>
         </div>
         <ScoreCard>
           <ScoreText>Score</ScoreText>
@@ -148,9 +150,9 @@ class App extends Component {
             <Image src={systemChoice.imageUrl} alt="opponent choice" />
           </div>
         </GameResultItem>
-        <Heading2>{result}</Heading2>
+        <Para>{result}</Para>
         <Button type="button" onClick={this.onClickPalyAgain}>
-          Play Again
+          PLAY AGAIN
         </Button>
       </GameResultView>
     )

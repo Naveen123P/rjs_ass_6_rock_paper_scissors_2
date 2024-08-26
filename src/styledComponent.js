@@ -54,7 +54,7 @@ export const ScoreText = styled.p`
   padding: 0px;
   margin: 0px;
 `
-export const Score = styled.h1`
+export const Score = styled.p`
   color: #223a5f;
   padding: 0px;
   margin: 0px;
