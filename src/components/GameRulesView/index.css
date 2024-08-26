@@ -1,0 +1,10 @@
+.model-bg {
+  height: 50vh;
+  width: 90vw;
+  background-color: #ffffff;
+  padding: 1rem;
+}
+.close-icon {
+  height: 2rem;
+  font-size: x-large;
+}

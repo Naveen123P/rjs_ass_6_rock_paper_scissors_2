@@ -8,7 +8,13 @@ import {
   ScoreText,
   Score,
   UnList,
+  GameResultItem,
+  GameResultView,
+  Image,
+  Heading2,
+  Button,
 } from './styledComponent'
+import GameRulesView from './components/GameRulesView'
 import ChooseItem from './components/ChooseItem'
 // import ScoreCardView from "./components/ScoreCardView"
 // import GameResultView from "./components/GameResultView"
@@ -34,9 +40,18 @@ const choicesList = [
   },
 ]
 
+const gameResults = {
+  win: 'YOU WON',
+  tie: 'IT IS DRAW',
+  lose: 'YOU LOSE',
+}
+
 class App extends Component {
   state = {
     score: 0,
+    playerChoice: choicesList[0],
+    systemChoice: choicesList[1],
+    result: gameResults.win,
   }
 
   renderScoreCardView = () => {
@@ -64,11 +79,34 @@ class App extends Component {
     </UnList>
   )
 
+  renderGameResultView = () => {
+    const {playerChoice, systemChoice, result} = this.state
+
+    return (
+      <GameResultView>
+        <GameResultItem>
+          <div>
+            <Para>YOU</Para>
+            <Image src={playerChoice.imageUrl} alt="your choice" />
+          </div>
+          <div>
+            <Para>OPPONENT</Para>
+            <Image src={systemChoice.imageUrl} alt="opponent choice" />
+          </div>
+        </GameResultItem>
+        <Heading2>{result}</Heading2>
+        <Button>Play Again</Button>
+      </GameResultView>
+    )
+  }
+
   render() {
     return (
       <AppBg className="app-bg">
         {this.renderScoreCardView()}
-        {this.renderPlayingView()}
+        {/* {this.renderPlayingView()} */}
+        {this.renderGameResultView()}
+        <GameRulesView />
       </AppBg>
     )
   }

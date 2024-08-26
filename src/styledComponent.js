@@ -13,6 +13,7 @@ export const Para = styled.div`
   font-weight: 700;
   margin: 0px;
   padding: 0px;
+  text-align: center;
 `
 export const ScoreCardContainer = styled.div`
   border: 3px solid #ffffff;
@@ -55,6 +56,7 @@ export const Score = styled.h1`
   margin: 0px;
   font-size: 3rem;
   font-weight: 700;
+  font-family: 'Roboto';
 `
 export const UnList = styled.ul`
   list-style-type: none;
@@ -65,4 +67,42 @@ export const UnList = styled.ul`
   height: 70%;
   align-items: center;
   justify-content: center;
+`
+export const GameResultView = styled.div`
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: center;
+`
+export const GameResultItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+export const Image = styled.img`
+  min-height: 1rem;
+  min-width: 1rem;
+  max-height: 150px;
+  max-width: 150px;
+  margin: 0px;
+  padding: 0px;
+`
+export const Heading2 = styled.h1`
+  color: #ffffff;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+`
+export const Button = styled.button`
+  color: #223a5f;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-family: 'Bree Serif';
+  border: none;
+  height: 2rem;
+  width: 8rem;
+  text-align: center;
+  align-self: center;
+  margin-top: 1rem;
 `
